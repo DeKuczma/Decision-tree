@@ -33,17 +33,10 @@ class InfoGain:
 class GainRatio:
 
     def calculate_gain(self, attribute, data, valid_rows, prev_entropy):
-        default_rows = defaultdict(list)
-        for i in valid_rows:
-            default_rows[data.data[i][attribute]].append(i)
-        entropy = 0
-        valid_len = len(valid_rows)
-        for key in default_rows:
-            temp_entropy = self.calculate_entropy(attribute, data, default_rows[key])
-            entropy += temp_entropy * len(default_rows[key]) / valid_len
+        info_gain = InfoGain()
+        gain = info_gain.calculate_entropy(attribute, data, valid_rows, prev_entropy)
         split = self.calculate_entropy(attribute, data, valid_rows)
-        info_gain = prev_entropy - entropy
-        return info_gain/split
+        return gain/split
 
     @staticmethod
     def calculate_entropy(attribute, data, valid_rows):

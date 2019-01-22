@@ -21,6 +21,7 @@ class Tree:
         nx.draw_networkx_labels(self.G,  pos, labels=node_labels)
         nx.draw_networkx_edge_labels(self.G, pos, edge_labels=edge_labels)
         plt.title("Decision tree")
+        plt.savefig("graph.pdf")
         plt.show()
 
     def add_nodes(self, node):
