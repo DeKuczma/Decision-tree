@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 from networkx import DiGraph
+from networkx.drawing.nx_agraph import graphviz_layout
 
 class Tree:
 
@@ -14,7 +15,7 @@ class Tree:
         else:
             self.G.add_node(self.root.node_number, name=self.root.attribute)
         self.add_nodes(self.root)
-        pos = nx.circular_layout(self.G, scale=300)
+        pos = graphviz_layout(self.G)
         edge_labels = nx.get_edge_attributes(self.G, 'label')
         node_labels = nx.get_node_attributes(self.G, 'name')
         nx.draw(self.G, pos)

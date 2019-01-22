@@ -47,7 +47,7 @@ class DecisionTreeAdapter:
             return new_node
 
         chosen_att = None
-        chosen_entropy = None
+        chosen_entropy = 0
         for i in range(len(self.used)):
             if self.used[i] is False:
                 if chosen_att is None:
